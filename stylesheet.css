@@ -1,0 +1,123 @@
+body {
+	background: #fefefe;
+	font-family: "Roboto";
+	}
+
+a:link, a:active, a:visited {
+	color: #FF0000;
+	text-transform: underline;
+	}
+
+a:hover {
+	color: #FF0000;
+	text-transform: none;
+	}
+
+.header {
+    width: 100%;
+    text-align:center;
+	background-color: yellow;
+	}
+
+.header.shrink {
+	}
+
+.header h1 {
+	font-size:25px;
+    font-weight:normal;
+	margin:0 auto;
+	}
+
+.banner {
+	width: 100%;
+	}
+
+.wrapper {
+	max-width: 920px;
+	position: relative;
+	margin: 0px auto 30px auto;
+	padding-top: 20px;
+	}
+
+.clear {
+	clear: both;
+	}
+
+.section {
+	padding: 5px 0 15px 0;
+	}
+
+table.section {
+	border-collapse: collapse;
+	border: 1px solid black;
+	width: 100%;
+	}
+	
+table.section th, table.section td {
+	border: 1px solid black;
+	}
+
+.section h1 {
+	font-size: 30px;
+	text-align: center;
+	font-family: "Oswald", sans-serif;
+	}
+	
+.section h2 {
+	font-size: 20px;
+	text-align: center;
+	}
+
+.sectitle {
+	font-weight: bold;
+	font-style: normal;
+	}
+
+.secleft {
+	float: left;
+	width: 23%;
+	text-align: right;
+	font-weight: bold;
+	}
+
+.secright {
+	float: right;
+	width: 75%;
+	}
+
+.footer {
+	width: 100%;
+	text-align: center;
+	}
+	
+ul {
+	list-style-type: none;
+	padding: 0;
+	}
+
+li {
+	padding: 0;
+	}
+	
+@media only screen and (max-width: 629px) {
+	.secleft {
+		float: none ;
+		width: 100% ;
+		padding: 0 0 10px 0;
+		text-align: left;
+	}
+	.secright {
+		float: none ;
+		width: 100% ;
+	}
+	.secphotoleft {
+		float: none ;
+		width: 100% ;
+		padding: 0 0 10px 0;
+		text-align: left;
+	}
+	.secphotoright {
+		float: none ;
+		width: 100% ;
+	}
+}	
