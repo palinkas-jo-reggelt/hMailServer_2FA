@@ -4,21 +4,8 @@
 	include_once("config.php");
 	include_once("functions.php");
 
-	if (isset($_POST['email'])) {
-		$email = $_POST['email'];
-		$entercode = "Enter the code:";
-	} else {
-		$email = "";
-		$entercode = "";
-	}
-
-	if (isset($_POST['code'])) {
-		$code = $_POST['code'];
-		$enterpassword = "Enter new password:";
-	} else {
-		$code = "";
-		$enterpassword = "";
-	}
+	if (isset($_POST['email'])) {$email = $_POST['email'];} else {$email = "";}
+	if (isset($_POST['code'])) {$code = $_POST['code'];} else {$code = "";}
 
 	if (($send_SMS) && ($send_Email)) {
 		$notifier = "phone by text message and to your alternate email address.";
