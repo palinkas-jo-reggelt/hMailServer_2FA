@@ -154,6 +154,7 @@
 			echo "
 				<div class='section'>
 					<div class='secleft'>
+						<div class='sectitle'>Error!</div>
 					</div>
 					<div class='secright'>
 						The email entered was not found on our system. Please check the spelling and re-enter your email address.
