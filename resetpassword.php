@@ -104,7 +104,7 @@
 			echo "
 				<div class='section'>
 					<div class='secleft'>
-						<div class='sectitle'>Step 3<br>Incorrect Code!</div>
+						<div class='sectitle'>Incorrect Code!</div>
 					</div>
 					<div class='secright'>
 						The code you entered is incorrect. Please re-enter the code below or <a href='./'><b>start over</b></a> to receive a new code.<br><br>

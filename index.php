@@ -19,7 +19,6 @@
 		$code = "";
 		$enterpassword = "";
 	}
-	if (isset($_POST['badaddress'])) {$badaddress = true;} else {$badaddress = false;}
 
 	if (($send_SMS) && ($send_Email)) {
 		$notifier = "phone by text message and to your alternate email address.";
@@ -48,7 +47,7 @@
 		Enter your email address.<br><br>
 		<?php 
 			echo "<form action='./' method='POST'>";
-				echo "<input type='text' size='30' name='email' value='".$email."' pattern='^[a-zA-Z0-9.!#$%&*+/=?^_{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$' />";
+				echo "<input type='text' size='30' name='email' value='".$email."' pattern='^[a-zA-Z0-9.!#$%&*+/=?^_{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$' title='Email Address' />";
 				echo "<input type='submit' value='Submit'>";
 			echo "</form>";
 		?>
@@ -140,7 +139,7 @@
 						<div class='secright'>
 							A one-time code has been sent to your ".$notifier." Enter the code below.<br><br>
 							<form action='./resetpassword.php' method='POST'>
-								<input type='text' size='6' name='code' value='".$code."' pattern='^[0-9]{6}$' autocomplete='off' />
+								<input type='text' size='6' name='code' value='".$code."' pattern='^[0-9]{6}$' title='6 digit code' autocomplete='off' />
 								<input type='hidden' name='email' value='".$email."'>
 								<input type='hidden' name='accountid' value='".$accountid."'>
 								<input type='submit' value='Submit'>
