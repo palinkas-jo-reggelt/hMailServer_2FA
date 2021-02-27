@@ -59,6 +59,16 @@
 		$hMSAccount->Save();
 	}
 
+	Function testPassword($email, $newPassword){
+		global $hMSAdminPass;
+		$hMS = new COM("hMailServer.Application");
+		$hMS->Authenticate("Administrator", $hMSAdminPass);
+		$Domain = explode("@", $email)[1];
+		$hMSDomain = $hMS->Domains->ItemByName($Domain);
+		$hMSAccount = $hMSDomain->Accounts->ItemByAddress($email);
+		return $hMSAccount->ValidatePassword($newPassword);
+	}
+
 	Function validatePassword($password){
 		global $pwMinLength;
 		global $pwValidateLowerCase;
