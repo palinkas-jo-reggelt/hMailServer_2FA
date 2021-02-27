@@ -96,35 +96,60 @@
 				$altemail = $row['altemail'];
 			}
 
-			$setnewcode = setCode();
-			$pdo->exec("UPDATE hm_pw_change SET onetimecode = '".$setnewcode."', initpwchange = NOW() WHERE accountid = '".$accountid."';");
-			$otcmessage = "A password change has been requested for your email. If you did not request this change, you can safely ignore this message. \n\nTemporary reset code: ".$setnewcode;
+			if ((($send_Email) && (strlen($altemail) == 0)) || (($send_SMS) && (strlen($mobilenumber) == 0))) {
+				if ((!$send_Email) && ((strlen($mobilenumber) == 0))) {
+					$noalt = "No mobile number associated with this account. Please notify administrator: ".$adminEmail;
+				}
+				if ((!$send_SMS) && ((strlen($altemail) == 0))) {
+					$noalt = "No alternate email address associated with this account. Please notify administrator: ".$adminEmail;
+				}
+				if (($send_SMS) && ($send_Email) && (strlen($altemail) == 0) && (strlen($mobilenumber) == 0)) {
+					$noalt = "No alternate email address or mobile number associated with this account. Please notify administrator: ".$adminEmail;
+				}
 
-			if (($send_SMS) && ($mobilenumber != "")) {
-				sendOTCbySMS($mobilenumber, $otcmessage);
-			}
-			if (($send_Email) && ($altemail != "")) {
-				sendOTCbyEmail($altemail, $otcmessage);
-			}
-
-			echo "
-				<div class='section'>
-					<div class='secleft'>
-						<div class='sectitle'>Step 2<br>Enter the code</div>
+				echo "
+					<div class='section'>
+						<div class='secleft'>
+							<div class='sectitle'>Error!</div>
+						</div>
+						<div class='secright'>
+							".$noalt."
+						</div>
+						<div class='clear'></div>
 					</div>
-					<div class='secright'>
-						A one-time code has been sent to your ".$notifier." Enter the code below.<br><br>
-						<form action='./resetpassword.php' method='POST'>
-							<input type='text' size='6' name='code' value='".$code."' pattern='^[0-9]{6}$' autocomplete='off' />
-							<input type='hidden' name='email' value='".$email."'>
-							<input type='hidden' name='accountid' value='".$accountid."'>
-							<input type='submit' value='Submit'>
-						</form>
-					</div>
-					<div class='clear'></div>
-				</div>
-			";
+				";
 
+			} else {
+
+				$setnewcode = setCode();
+				$pdo->exec("UPDATE hm_pw_change SET onetimecode = '".$setnewcode."', initpwchange = NOW() WHERE accountid = '".$accountid."';");
+				$otcmessage = "A password change has been requested for your email. If you did not request this change, you can safely ignore this message. \n\nTemporary reset code: ".$setnewcode;
+
+				if (($send_SMS) && ($mobilenumber != "")) {
+					sendOTCbySMS($mobilenumber, $otcmessage);
+				}
+				if (($send_Email) && ($altemail != "")) {
+					sendOTCbyEmail($altemail, $otcmessage);
+				}
+
+				echo "
+					<div class='section'>
+						<div class='secleft'>
+							<div class='sectitle'>Step 2<br>Enter the code</div>
+						</div>
+						<div class='secright'>
+							A one-time code has been sent to your ".$notifier." Enter the code below.<br><br>
+							<form action='./resetpassword.php' method='POST'>
+								<input type='text' size='6' name='code' value='".$code."' pattern='^[0-9]{6}$' autocomplete='off' />
+								<input type='hidden' name='email' value='".$email."'>
+								<input type='hidden' name='accountid' value='".$accountid."'>
+								<input type='submit' value='Submit'>
+							</form>
+						</div>
+						<div class='clear'></div>
+					</div>
+				";
+			}
 		} else {
 			echo "
 				<div class='section'>

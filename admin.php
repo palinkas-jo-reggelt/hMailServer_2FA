@@ -52,7 +52,7 @@
 		$search_sql = " WHERE accountaddress LIKE '%".$search."%'";
 	}
 
-	echo "<form action='./' method='GET'>";
+	echo "<form action='".$_SERVER["REQUEST_URI"]."' method='GET'>";
 	echo "Search Accounts:<br><input type='text' size='30' name='search' value='".$search."'><input type='submit' name='submit' value='Search' >";
 	echo "</form>";
 	echo "<br>";
