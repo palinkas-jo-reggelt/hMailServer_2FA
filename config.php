@@ -14,7 +14,7 @@ $codeExpiry     = 10;                      // Number of minutes before one time 
 $smsdrc = 'C:\\gammu\\bin\\smsdrc';        // Location of gammu smsdrc (double backslashes, please)
 $otcFromAddress = 'notify@mydomain.tld';   // From address when sending one time code by email
 $otcSubject     = 'Password Reset Code';   // Subject when sending one time code by email
-$adminEmail     = 'postmaster (at) domain (dot) com'; // Postmaster account for users to contact in case of error
+$adminEmail     = 'postmaster@domain.com'; // Postmaster account for users to contact in case of error
 
 
 /*###   PASSWORD VALIDATION   ###########################*/

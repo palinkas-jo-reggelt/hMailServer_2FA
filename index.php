@@ -98,13 +98,13 @@
 
 			if ((($send_Email) && (strlen($altemail) == 0)) || (($send_SMS) && (strlen($mobilenumber) == 0))) {
 				if ((!$send_Email) && ((strlen($mobilenumber) == 0))) {
-					$noalt = "No mobile number associated with this account. Please notify administrator: ".$adminEmail;
+					$noalt = "No mobile number associated with this account. Please notify administrator: <a href='mailto:".$adminEmail."'>".$adminEmail."</a>";
 				}
 				if ((!$send_SMS) && ((strlen($altemail) == 0))) {
-					$noalt = "No alternate email address associated with this account. Please notify administrator: ".$adminEmail;
+					$noalt = "No alternate email address associated with this account. Please notify administrator: <a href='mailto:".$adminEmail."'>".$adminEmail."</a>";
 				}
 				if (($send_SMS) && ($send_Email) && (strlen($altemail) == 0) && (strlen($mobilenumber) == 0)) {
-					$noalt = "No alternate email address or mobile number associated with this account. Please notify administrator: ".$adminEmail;
+					$noalt = "No alternate email address or mobile number associated with this account. Please notify administrator: <a href='mailto:".$adminEmail."'>".$adminEmail."</a>";
 				}
 
 				echo "
