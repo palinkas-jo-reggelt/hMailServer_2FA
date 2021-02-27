@@ -130,7 +130,7 @@
 						<div class='sectitle'>Ooops!</div>
 					</div>
 					<div class='secright'>
-						Something went wrong. Please <a href='./'><b>start over</b></a> to receive a new code.<br><br>
+						Something went wrong. Please <a href='./'><b>start over</b></a> to receive a new code or notify administrator: <a href='mailto:".$adminEmail."'>".$adminEmail."</a>.<br><br>
 					</div>
 					<div class='clear'></div>
 				</div>
