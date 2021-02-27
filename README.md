@@ -7,7 +7,12 @@
  MySQL  
  hMailServer using MySQL  
  
+# Recommended 
+ Gammu SMS
+ 
 # Instructions
  Fill out the variables in config.php  
  Fill out the mobile numbers and/or alternate email addresses in admin.php  
  Let your users know the url for changing their password  
+
+ 
