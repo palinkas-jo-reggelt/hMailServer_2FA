@@ -22,7 +22,7 @@
 				setcookie('username', $_POST['username'], false, $path, $_SERVER["HTTP_HOST"]);
 				setcookie('password', md5($_POST['password']), false, $path, $_SERVER["HTTP_HOST"]);
 			}
-			header("Location: ".$path);
+			header("Location: admin.php");
 		} else {
 			$passwordfail = true; 
 		}
