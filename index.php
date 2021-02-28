@@ -111,10 +111,10 @@
 				$pdo->exec("UPDATE hm_pw_change SET onetimecode = '".$setnewcode."', initpwchange = NOW() WHERE accountid = '".$accountid."';");
 				$otcmessage = "A password change has been requested for your email. If you did not request this change, you can safely ignore this message. \n\nTemporary reset code: ".$setnewcode;
 
-				if (($send_SMS) && ($mobilenumber != "")) {
+				if (($send_SMS) && (strlen($mobilenumber) != 0)) {
 					sendOTCbySMS($mobilenumber, $otcmessage);
 				}
-				if (($send_Email) && ($altemail != "")) {
+				if (($send_Email) && (strlen($altemail) != 0)) {
 					sendOTCbyEmail($altemail, $otcmessage);
 				}
 
