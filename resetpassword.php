@@ -104,10 +104,10 @@
 			echo "
 				<div class='section'>
 					<div class='secleft'>
-						<div class='sectitle'>Incorrect Code!</div>
+						<div class='sectitle'>Invalid Code!</div>
 					</div>
 					<div class='secright'>
-						The code you entered is incorrect. Please re-enter the code below or <a href='./'><b>start over</b></a> to receive a new code.<br><br>
+						The code you entered is invalid. Please re-enter the code below or <a href='./'><b>start over</b></a> to receive a new code.<br><br>
 						<form action='./resetpassword.php' method='POST'>
 							<input type='text' size='6' name='code' value='".$code."' pattern='^[0-9]{6}$' />
 							<input type='hidden' name='email' value='".$email."'>
