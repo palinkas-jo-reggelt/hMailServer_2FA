@@ -79,36 +79,28 @@
 		$pwLenRegex = "/^.{".$pwMinLength.",}$/";
 		$pwSymbolRegex = "/[".$pwSymbols."]/";
 		
-		if (preg_match($pwLenRegex,$password)) {
-			$pwml = "";
-		} else {
+		$pwml = $pwlc = $pwuc = $pwn = $pws = "";
+		
+		if (!preg_match($pwLenRegex,$password)) {
 			$pwml = "<br>* Password has too few characters. The minimum length is ".$pwMinLength." characters.";
 		}
 		if ($pwValidateLowerCase) {
-			if (preg_match("/[a-z]/",$password)) {
-				$pwlc = "";
-			} else {
+			if (!preg_match("/[a-z]/",$password)) {
 				$pwlc = "<br>* Password has no lower case letters. At least one lower case letter is required.";
 			}
 		}
 		if ($pwValidateUpperCase) {
-			if (preg_match("/[A-Z]/",$password)) {
-				$pwuc = "";
-			} else {
+			if (!preg_match("/[A-Z]/",$password)) {
 				$pwuc = "<br>* Password has no upper case letters. At least one upper case letter is required.";
 			}
 		}
 		if ($pwValidateNumeric) {
-			if (preg_match("/[0-9]/",$password)) {
-				$pwn = "";
-			} else {
+			if (!preg_match("/[0-9]/",$password)) {
 				$pwn = "<br>* Password has no numbers. At least one number is required.";
 			}
 		}
 		if ($pwValidateSymbols) {
-			if (preg_match($pwSymbolRegex,$password)) {
-				$pws = "";
-			} else {
+			if (!preg_match($pwSymbolRegex,$password)) {
 				$pws = "<br>* Password has no symbols. At least one symbol is required.";
 			}
 		}
