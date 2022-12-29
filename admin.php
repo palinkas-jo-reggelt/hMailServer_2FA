@@ -60,8 +60,8 @@
 	$pdo->exec("
 		CREATE TABLE IF NOT EXISTS hm_pw_change (
 			accountid int(11) NOT NULL,
-			mobilenumber varchar(10) NOT NULL,
-			altemail varchar(36) NOT NULL,
+			mobilenumber varchar(10) DEFAULT NULL,
+			altemail varchar(36) DEFAULT NULL,
 			onetimecode int(6) NOT NULL DEFAULT 0,
 			initpwchange datetime NOT NULL DEFAULT '1970-01-01 01:00:00',
 			PRIMARY KEY (accountid)
