@@ -8,8 +8,8 @@
  hMailServer using MySQL  
  
 # Recommended 
- Twilio SMS
- Gammu SMS
+ Twilio SMS  
+ Gammu SMS  
  
 # Instructions
  Rename config.dist.php to config.php and fill out the variables  
