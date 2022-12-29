@@ -19,9 +19,41 @@
 
 	Function sendOTCbySMS($mobilenumber, $otcmessage){
 		global $smsdrc;
+		global $account_sid;
+		global $auth_token;
+		global $twilio_number;
+		global $use_Twilio;
+		global $use_Gammu;
+
 		$otcmsg = str_replace("\n", "", $otcmessage);
 		$len = strlen($otcmsg);
-		exec('gammu-smsd-inject.exe -c '.$smsdrc.' TEXT '.$mobilenumber.'  -len '.$len.' -text "'.$otcmsg.'"');
+		$fullnum = "+1".$mobilenumber;
+
+		if ($use_Twilio) {
+			$url = "https://api.twilio.com/2010-04-01/Accounts/".$account_sid."/Messages.json";
+			$data = array (
+				'From' => $twilio_number,
+				'To' => $fullnum,
+				'Body' => $otcmsg
+			);
+			$post = http_build_query($data);
+			$x = curl_init($url );
+			curl_setopt($x, CURLOPT_POST, true);
+			curl_setopt($x, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($x, CURLOPT_SSL_VERIFYPEER, false);
+			curl_setopt($x, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+			curl_setopt($x, CURLOPT_USERPWD, "$account_sid:$auth_token");
+			curl_setopt($x, CURLOPT_POSTFIELDS, $post);
+			$y = curl_exec($x);
+			curl_close($x);
+			// var_dump($post);  // For debugging
+			// echo "<br><br>";  // For debugging
+			// var_dump($y);     // For debugging
+		}
+		
+		if ($use_Gammu) {
+			exec('gammu-smsd-inject.exe -c '.$smsdrc.' TEXT '.$fullnum.'  -len '.$len.' -text "'.$otcmsg.'"');
+		}
 	}
 	
 	Function sendOTCbyEmail($email, $otcmessage){

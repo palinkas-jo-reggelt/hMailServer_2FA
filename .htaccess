@@ -1,0 +1,9 @@
+# Deny access to GitHub files except to localhost
+<FilesMatch ^\.git>
+	Require local
+</FilesMatch>
+
+# Deny access to admin.php except to localhost
+#<Files admin.php>
+#	Require local
+#</Files>

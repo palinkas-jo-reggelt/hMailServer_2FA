@@ -46,9 +46,7 @@
 	if ((time() - $otc_init) < ($codeExpiry * 60)) {$temptime = true;} else {$temptime = false;}
 	
 	if (($email) && ($accountid) && ($code == $onetimecode) && ($temptime) && ($password)) {
-
 		if (validatePassword($password) == "") {
-			
 			changePassword($email,$password);
 			if (testPassword($email,$password)) {
 				
@@ -118,7 +116,7 @@
 						if ($pwValidateLowerCase) {echo "<br>Lower case letters are required";}
 						if ($pwValidateUpperCase) {echo "<br>Upper case letters are required";}
 						if ($pwValidateNumeric) {echo "<br>Numbers are required";}
-						if ($pwValidateSymbols) {echo "<br>Symbols are required";}
+						if ($pwValidateSymbols) {echo "<br>Symbols are required: ".preg_replace('/\\\\/', ' ', $pwSymbols);}
 
 			echo	"</div>
 					<div class='clear'></div>
